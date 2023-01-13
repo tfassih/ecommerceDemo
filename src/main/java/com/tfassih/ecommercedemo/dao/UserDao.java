@@ -17,7 +17,6 @@ public class UserDao {
     public List<UserModel> getAllUsers() {
         return userRepo.findAll();
     }
-
     public UserModel findByEmail(String email) {
         return userRepo.findByEmail(email);
     }
