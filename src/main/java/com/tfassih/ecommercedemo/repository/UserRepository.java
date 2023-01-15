@@ -10,6 +10,6 @@ public interface UserRepository extends MongoRepository<UserModel, String> {
     @Query("{email: '?0'}")
     UserModel findByEmail(String email);
 
-    @Query("{name: '?0'}")
+    @Query(value="{name: '?0'}")
     UserModel findByName(String name);
 }

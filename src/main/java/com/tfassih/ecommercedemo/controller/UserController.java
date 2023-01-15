@@ -31,4 +31,17 @@ public class UserController {
     public UserModel getUserByEmail(@PathVariable String email){
         return user.findByEmail(email);
     }
+
+    @PostMapping("/{email}/{name}")
+    @ResponseBody
+    public void createUser(@PathVariable String name,
+                           @PathVariable String email){
+        user.createUser(name, email);
+    }
+
+    @DeleteMapping("/{email}")
+    @ResponseBody
+    public void removeUser(@PathVariable String email){
+        user.deleteUser(email);
+    }
 }

@@ -8,6 +8,7 @@ import org.springframework.data.mongodb.repository.config.EnableMongoRepositorie
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.Optional;
 
 @Component
 @EnableMongoRepositories
@@ -22,5 +23,16 @@ public class UserDao {
     }
     public UserModel findByName(String name){
         return userRepo.findByName(name);
+    }
+    public void createUser(String name, String email){
+        userRepo.save(new UserModel(name, email));
+    }
+    public void updateUser(String oldEmail, String email){
+        UserModel user = userRepo.findByEmail(oldEmail);
+        user.setEmail(email);
+        userRepo.save(user);
+    }
+    public void deleteUser(String email){
+        userRepo.delete(findByEmail(email));
     }
 }

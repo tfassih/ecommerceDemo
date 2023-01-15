@@ -17,4 +17,8 @@ public class ProductDao {
     public List<ProductModel> getAllProducts(){
         return productRepo.findAll();
     }
+
+    public ProductModel getProductByUPC(String upc){
+        return productRepo.getProductByUPC(upc);
+    }
 }
